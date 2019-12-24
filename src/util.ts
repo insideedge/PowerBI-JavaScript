@@ -1,9 +1,9 @@
 import { HttpPostMessage } from 'http-post-message';
-declare global {
-  interface Window {
-    msCrypto: Crypto;
-  }
-}
+// declare global {
+//   interface Window {
+//     msCrypto: Crypto;
+//   }
+// }
 
 /**
  * Raises a custom event with event data on the specified HTML element.
@@ -175,7 +175,11 @@ export function isSavedInternal(hpm: HttpPostMessage, uid: string, contentWindow
   * @returns {boolean}
  */
 export function isRDLEmbed(embedUrl: string): boolean {
-  return embedUrl.toLowerCase().indexOf("/rdlembed?") >= 0;
+  if (embedUrl) {
+    return embedUrl.toLowerCase().indexOf("/rdlembed?") >= 0;
+  } else {
+    return false;
+  }
 }
 
 /**
